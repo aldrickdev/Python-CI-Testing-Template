@@ -21,6 +21,13 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
+
+      # https://github.com/actions/setup-node
+      - name: Setup Node for datadog-ci command
+        uses: actions/setup-node@v3
+
+      - name: Install datadog-ci
+        run: npm install -g @datadog/datadog-ci
         
       - name: Install Dependencies
         run: |
@@ -32,11 +39,15 @@ jobs:
         env: 
           DD_CIVISIBILITY_AGENTLESS_ENABLED: true
           DD_API_KEY: ${{ secrets.DD_API_KEY }}
+          DATADOG_API_KEY: ${{ secrets.DD_API_KEY }}
           DD_SITE: datadoghq.com
           DD_ENV: pre-ci
           DD_SERVICE: python-ci-testing-template
-        run: pytest --ddtrace
+        run: |
+        datadog-ci tag --level pipeline --tags team:bestpod
+        pytest --ddtrace
       
+      # https://github.com/marketplace/actions/datadog-synthetics-ci
       - name: Run Datadog Synthetic tests
         uses: DataDog/synthetics-ci-github-action@v0.18.0
         with:

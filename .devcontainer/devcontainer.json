@@ -4,6 +4,8 @@
   "service": "proj",
   "workspaceFolder": "/workspaces",
   "features": {
-    "ghcr.io/eitsupi/devcontainer-features/go-task:1": {}
-  }
+    "ghcr.io/eitsupi/devcontainer-features/go-task:1": {},
+    "ghcr.io/devcontainers/features/node:1": {}
+  },
+  "postCreateCommand": "npm install -g @datadog/datadog-ci"
 }

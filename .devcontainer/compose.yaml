@@ -5,6 +5,9 @@ services:
     build:
       context: ..
       dockerfile: .devcontainer/Dockerfile
+    
+    environment:
+      - DATADOG_API_KEY=${DATADOG_API_KEY}
 
     volumes:
       - ..:/workspaces
