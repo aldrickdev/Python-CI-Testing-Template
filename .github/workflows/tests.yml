@@ -43,9 +43,7 @@ jobs:
           DD_SITE: datadoghq.com
           DD_ENV: pre-ci
           DD_SERVICE: python-ci-testing-template
-        run: |
-        datadog-ci tag --level pipeline --tags team:bestpod
-        pytest --ddtrace
+        run: datadog-ci tag --level pipeline --tags team:bestpod && pytest --ddtrace
       
       # https://github.com/marketplace/actions/datadog-synthetics-ci
       - name: Run Datadog Synthetic tests
