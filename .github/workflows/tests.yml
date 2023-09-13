@@ -27,5 +27,5 @@ jobs:
           pip install -e .
 
       - name: Test with pytest
-        run: pytest
+        run: DD_CIVISIBILITY_AGENTLESS_ENABLED=true DD_API_KEY=${{ secrets.DD_API_KEY }} DD_SITE=datadoghq.com DD_ENV=pre-ci DD_SERVICE=python-ci-testing-template pytest --ddtrace
       
