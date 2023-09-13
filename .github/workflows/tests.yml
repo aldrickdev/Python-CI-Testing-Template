@@ -37,3 +37,9 @@ jobs:
           DD_SERVICE: python-ci-testing-template
         run: pytest --ddtrace
       
+      - name: Run Datadog Synthetic tests
+        uses: DataDog/synthetics-ci-github-action@v0.18.0
+        with:
+          api_key: ${{secrets.DD_API_KEY}}
+          app_key: ${{secrets.DD_APP_KEY}}
+          public_ids: '5df-yiw-32p'
