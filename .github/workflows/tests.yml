@@ -42,4 +42,5 @@ jobs:
         with:
           api_key: ${{secrets.DD_API_KEY}}
           app_key: ${{secrets.DD_APP_KEY}}
+          subdomain: 'bestpod'
           public_ids: '5df-yiw-32p'
