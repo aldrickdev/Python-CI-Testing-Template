@@ -2,6 +2,7 @@
 
 version: '3'
 
+tasks:
   com-dev:
     cmds:
       - pip-compile --strip-extras requirements_dev.in
