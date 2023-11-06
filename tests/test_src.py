@@ -4,7 +4,7 @@ from hello import SayHello
 
 
 def test_SayHello_one_fast(ddspan):
-    delay = 5
+    delay = 1
 
     # Adding custom metric
     ddspan.set_tag("artificial_delay", delay)
@@ -16,7 +16,7 @@ def test_SayHello_one_fast(ddspan):
 
 
 def test_SayHello_one_slow(ddspan):
-    delay = 15
+    delay = 5
 
     # Adding custom metric
     ddspan.set_tag("artificial_delay", delay)
@@ -30,43 +30,29 @@ def test_SayHello_one_slow(ddspan):
 @pytest.mark.parametrize(
     "name,delay,expected",
     [
-        ("Datadog", 5, "Hello Datadog"),
-        ("Datadog", 5, "Hello Datadog"),
-        ("Datadog", 5, "Hello Datadog"),
-        ("Datadog", 5, "Hello Datadog"),
-        ("Datadog", 5, "Hello Datadog"),
-        ("Datadog", 5, "Hello Datadog"),
-        ("Datadog", 5, "Hello Datadog"),
-        ("Datadog", 5, "Hello Datadog"),
-        ("Datadog", 5, "Hello Datadog"),
-        ("Datadog", 5, "Hello Datadog"),
+        ("Datadog", 1, "Hello Datadog"),
+        ("Datadog", 1, "Hello Datadog"),
+        ("Datadog", 1, "Hello Datadog"),
     ],
 )
-def test_SayHello_ten_fast(name: str, delay: int, expected: str, ddspan):
+def test_SayHello_three_fast(name: str, delay: int, expected: str, ddspan):
     # Adding custom metric
     ddspan.set_tag("artificial_delay", delay)
 
     # Adding custom tags
-    ddspan.set_tag("test_type", "ten_fast")
+    ddspan.set_tag("test_type", "three_fast")
     assert SayHello(name, delay) == expected
 
 
 @pytest.mark.parametrize(
     "name,delay,expected",
     [
-        ("Datadog", 15, "Hello Datadog"),
-        ("Datadog", 15, "Hello Datadog"),
-        ("Datadog", 15, "Hello Datadog"),
-        ("Datadog", 15, "Hello Datadog"),
-        ("Datadog", 15, "Hello Datadog"),
-        ("Datadog", 15, "Hello Datadog"),
-        ("Datadog", 15, "Hello Datadog"),
-        ("Datadog", 15, "Hello Datadog"),
-        ("Datadog", 15, "Hello Datadog"),
-        ("Datadog", 15, "Hello Datadog"),
+        ("Datadog", 5, "Hello Datadog"),
+        ("Datadog", 5, "Hello Datadog"),
+        ("Datadog", 5, "Hello Datadog"),
     ],
 )
-def test_SayHello_ten_slow(name: str, delay: int, expected: str, ddspan):
+def test_SayHello_three_slow(name: str, delay: int, expected: str, ddspan):
     # Adding custom metric
     ddspan.set_tag("artificial_delay", delay)
 
