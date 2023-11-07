@@ -52,4 +52,5 @@ jobs:
           api_key: ${{secrets.DD_API_KEY}}
           app_key: ${{secrets.DD_APP_KEY}}
           # subdomain: 'bestpod'
-          public_ids: ${{secrets.DD_SYN_TEST}}
+          # public_ids: ${{secrets.DD_SYN_TEST}}
+          public_ids: nv2-22a-9id
